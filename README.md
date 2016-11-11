@@ -1,2 +1,2 @@
 # DayRee
-Yet another Android dairy application
+Yet another Android diary application
