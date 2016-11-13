@@ -6,7 +6,7 @@
 
     <item
         android:title="@string/audios"
-        android:icon="@drawable/ic_action_communication_textsms" />
+        android:icon="@drawable/ic_tab_audios" />
 
     <item
         android:title="@string/photos"
