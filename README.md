@@ -1,2 +1,2 @@
 # DayRee
-Yet another Android diary application
+Yet another Android diary app
