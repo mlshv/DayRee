@@ -1,33 +1,53 @@
 package com.mlshv.dayree.ui
 
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AppCompatActivity
 import com.mlshv.dayree.R
-import android.support.design.widget.BottomNavigationView
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
 
 
-class MainActivity : FragmentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    var names = arrayOf("Иван", "Марья", "Петр", "Антон", "Даша", "Борис", "Костя", "Игорь", "Анна", "Денис", "Андрей")
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
+        initBottomNavigation()
 
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.action_records -> {
+        val recordsListView = findViewById(R.id.records_list) as ListView
 
-                }
-                R.id.action_audios -> {
+        val adapter = ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, names)
 
-                }
-                R.id.action_photos -> {
-
-                }
-            }
-            false
-        }
+        recordsListView.adapter = adapter
     }
 
+    private fun initBottomNavigation() {
+        val tabColors = applicationContext.resources.getIntArray(R.array.tab_colors)
+        val bottomNavigation = findViewById(R.id.bottom_navigation) as AHBottomNavigation
+        bottomNavigation.isColored = true
+        val navigationAdapter = AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu)
+        navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors)
+        
+        bottomNavigation.setOnTabSelectedListener { tabPosition, wasSelected ->
+            when(tabPosition) {
+                1 -> {
+                    Toast.makeText(this, "Tab 1", Toast.LENGTH_SHORT).show()
+                }
+                2 -> {
+                    Toast.makeText(this, "Tab 2", Toast.LENGTH_SHORT).show()
+                }
+                3 -> {
+                    Toast.makeText(this, "Tab 3", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
+    }
 }
