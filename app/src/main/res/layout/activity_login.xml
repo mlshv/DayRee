@@ -25,12 +25,11 @@
         android:layout_marginTop="23dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColorLink="@color/white"
+        android:textColorLink="@color/colorAccent"
         android:hint="@string/enter_password"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textCursorDrawable="@color/white"
-        android:textColorHighlight="@color/white" />
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:textColorHighlight="@color/colorAccent" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -46,10 +45,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:hint="@string/repeat_password"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:textColorHighlight="@color/white"
-        android:textCursorDrawable="@color/white" />
+        android:textColorHint="@color/colorAccent"
+        android:textColor="@color/colorAccent"
+        android:textColorHighlight="@color/colorAccent" />
 
     <Button
         android:text="@string/save"
