@@ -32,18 +32,6 @@
         android:textCursorDrawable="@color/white"
         android:textColorHighlight="@color/white" />
 
-    <TextView
-        android:text="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/welcome_text_view"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="36sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/colorAccent" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,4 +62,17 @@
         android:layout_alignParentStart="true"
         android:background="@color/colorAccent"
         android:textColor="@android:color/background_dark" />
+
+    <TextView
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome_text_view"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="36sp"
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp" />
 </RelativeLayout>
