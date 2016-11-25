@@ -1,6 +1,5 @@
 package com.mlshv.dayree.ui
 
-import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -27,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
             (repeatPasswordEditText.parent as RelativeLayout).removeView(repeatPasswordEditText)
             val layoutParams = RelativeLayout.LayoutParams(loginButton.layoutParams)
             layoutParams.addRule(RelativeLayout.BELOW, R.id.password_text)
+            layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT
             loginButton.layoutParams = layoutParams
         }
 
