@@ -2,11 +2,11 @@ package com.mlshv.dayree.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import android.widget.Toast
 
 
@@ -20,12 +20,14 @@ class MainActivity : AppCompatActivity() {
 
         initBottomNavigation()
 
-        val recordsListView = findViewById(R.id.records_list) as ListView
+        val recordsRecyclerView = findViewById(R.id.records_list) as RecyclerView
+        recordsRecyclerView.setHasFixedSize(true)
 
-        val adapter = ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, names)
+        val mainLayoutManager = LinearLayoutManager(this)
+        recordsRecyclerView.layoutManager = mainLayoutManager
 
-        recordsListView.adapter = adapter
+        val adapter = RecordsAdapter(names)
+        recordsRecyclerView.adapter = adapter
     }
 
     private fun initBottomNavigation() {
@@ -37,13 +39,13 @@ class MainActivity : AppCompatActivity() {
         
         bottomNavigation.setOnTabSelectedListener { tabPosition, wasSelected ->
             when(tabPosition) {
-                1 -> {
+                0 -> {
                     Toast.makeText(this, "Tab 1", Toast.LENGTH_SHORT).show()
                 }
-                2 -> {
+                1 -> {
                     Toast.makeText(this, "Tab 2", Toast.LENGTH_SHORT).show()
                 }
-                3 -> {
+                2 -> {
                     Toast.makeText(this, "Tab 3", Toast.LENGTH_SHORT).show()
                 }
             }
