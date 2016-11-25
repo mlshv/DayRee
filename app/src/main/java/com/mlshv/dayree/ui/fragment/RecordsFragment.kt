@@ -1,0 +1,6 @@
+package com.mlshv.dayree.ui.fragment
+
+import android.support.v4.app.Fragment
+
+class RecordsFragment : Fragment() {
+}
