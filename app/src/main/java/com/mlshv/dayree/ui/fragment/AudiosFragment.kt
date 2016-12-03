@@ -2,5 +2,4 @@ package com.mlshv.dayree.ui.fragment
 
 import android.support.v4.app.Fragment
 
-class AudiosFragment : Fragment() {
-}
+class AudiosFragment : Fragment()

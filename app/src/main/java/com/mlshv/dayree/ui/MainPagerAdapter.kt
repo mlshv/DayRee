@@ -3,7 +3,6 @@ package com.mlshv.dayree.ui
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import java.util.*
 import android.view.ViewGroup
 import com.mlshv.dayree.ui.fragment.AudiosFragment
 import com.mlshv.dayree.ui.fragment.PhotosFragment
@@ -12,14 +11,13 @@ import com.mlshv.dayree.ui.fragment.RecordsFragment
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    val fragments = ArrayList<Fragment>()
+    val fragments = kotlin.arrayOfNulls<Fragment>(3)
     var currentFragment: Fragment? = null
 
     init {
-        fragments.clear()
-        fragments.add(RecordsFragment())
-        fragments.add(AudiosFragment())
-        fragments.add(PhotosFragment())
+        fragments[0] = (RecordsFragment())
+        fragments[1] = (AudiosFragment())
+        fragments[2] = (PhotosFragment())
     }
 
     override fun getItem(position: Int) = fragments[position]

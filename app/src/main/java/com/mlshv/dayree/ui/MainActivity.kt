@@ -1,9 +1,8 @@
 package com.mlshv.dayree.ui
 
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
@@ -11,23 +10,14 @@ import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
-
-    var names = arrayOf("Иван", "Марья", "Петр", "Антон", "Даша", "Борис", "Костя", "Игорь", "Анна", "Денис", "Андрей")
-
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initBottomNavigation()
 
-        val recordsRecyclerView = findViewById(R.id.records_list) as RecyclerView
-        recordsRecyclerView.setHasFixedSize(true)
-
-        val mainLayoutManager = LinearLayoutManager(this)
-        recordsRecyclerView.layoutManager = mainLayoutManager
-
-        val adapter = RecordsAdapter(names)
-        recordsRecyclerView.adapter = adapter
+        val viewPager = findViewById(R.id.main_pager) as ViewPager
+        val pagerAdapter = MainPagerAdapter(supportFragmentManager)
+        viewPager.adapter = pagerAdapter
     }
 
     private fun initBottomNavigation() {
