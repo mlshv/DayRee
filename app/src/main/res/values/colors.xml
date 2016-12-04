@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#106cc8</color>
     <color name="colorAccent">#e0e0e0</color>
 
-    <color name="color_tab_1">#8B6B62</color>
-    <color name="color_tab_2">#03A9F4</color>
-    <color name="color_tab_3">#00886A</color>
+    <color name="color_tab_0">#8B6B62</color>
+    <color name="color_tab_1">#03A9F4</color>
+    <color name="color_tab_2">#00886A</color>
 
     <array name="tab_colors">
         <item name="tab_1">#8B6B62</item>
