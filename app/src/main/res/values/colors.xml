@@ -3,8 +3,9 @@
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#106cc8</color>
     <color name="colorAccent">#e0e0e0</color>
+    <color name="white">#fff</color>
 
-    <color name="color_tab_0">#8B6B62</color>
+    <color name="color_tab_0">#8b6b62</color>
     <color name="color_tab_1">#03A9F4</color>
     <color name="color_tab_2">#00886A</color>
 

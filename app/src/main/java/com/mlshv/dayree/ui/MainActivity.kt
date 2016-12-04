@@ -1,5 +1,6 @@
 package com.mlshv.dayree.ui
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -10,9 +11,6 @@ import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
-
-
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,6 +56,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFloatingActionButton() {
         floatingActionButton = findViewById(R.id.fab) as FloatingActionButton
+        floatingActionButton!!.setOnClickListener({
+            val recordIntent = Intent(this, RecordActivity::class.java)
+            startActivity(recordIntent)
+        })
     }
 
     private fun reshowFab() {
