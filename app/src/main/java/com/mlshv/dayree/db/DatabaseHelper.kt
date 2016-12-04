@@ -11,8 +11,15 @@ class DatabaseHelper(val context: Context) : SQLiteOpenHelper(context, dbName, n
     companion object {
         val dbName = "dayRee.db"
         val dbVersion = 1
+        var dbInstance : SQLCipherDatabase? = null
+
         init {
             CupboardFactory.cupboard().register(Record::class.java)
+        }
+
+        fun closeDatabase() {
+            dbInstance?.close()
+            dbInstance = null
         }
     }
 
@@ -27,17 +34,30 @@ class DatabaseHelper(val context: Context) : SQLiteOpenHelper(context, dbName, n
     }
 
     fun isDatabasePasswordCorrect(password: String): Boolean {
-        var checkDB: SQLiteDatabase? = null
         val databasePath = context.getDatabasePath(dbName).path
         try {
-            checkDB = SQLiteDatabase.openDatabase(databasePath, password, null,
+            val sqliteDb = SQLiteDatabase.openDatabase(databasePath, password, null,
                     SQLiteDatabase.OPEN_READONLY)
-            checkDB!!.close()
-        } catch (e: SQLiteException) {
-            // database doesn't exist yet.
-        }
+            dbInstance = SQLCipherDatabase(sqliteDb)
+        } catch (e: SQLiteException) { }
 
-        return checkDB != null
+        return dbInstance != null
+    }
+
+    fun tryOpenDatabaseWithPassword(password: String): Boolean {
+        val databasePath = context.getDatabasePath(dbName).path
+        try {
+            val sqliteDb = SQLiteDatabase.openDatabase(databasePath, password, null,
+                    SQLiteDatabase.OPEN_READWRITE)
+            dbInstance = SQLCipherDatabase(sqliteDb)
+        } catch (e: SQLiteException) { }
+
+        return dbInstance != null
+    }
+
+    fun put(any : Any) {
+        if (CupboardFactory.cupboard().isRegisteredEntity(any.javaClass))
+            CupboardFactory.cupboard().withDatabase(dbInstance).put(any)
     }
 
     fun isDatabaseExists() = context.getDatabasePath(dbName).exists()

@@ -8,7 +8,7 @@ class SQLCipherDatabase(val database : SQLiteDatabase) : CupboardDatabase {
 
     override fun replaceOrThrow(table: String?, nullColumnHack: String?, initialValues: ContentValues?) = database.replaceOrThrow(table, nullColumnHack, initialValues)
 
-    override fun rawQuery(sql: String?, selectionArgs: Array<out String>?) = database.rawQuery(sql, selectionArgs)
+    override fun rawQuery(sql: String?, selectionArgs: Array<out String>?) = database.rawQuery(sql, selectionArgs)!!
 
     override fun setTransactionSuccessful() = database.setTransactionSuccessful()
 
@@ -30,4 +30,6 @@ class SQLCipherDatabase(val database : SQLiteDatabase) : CupboardDatabase {
     override fun yieldIfContendedSafely() { database.yieldIfContendedSafely() }
 
     override fun delete(table: String?, whereClause: String?, whereArgs: Array<out String>?) = database.delete(table, whereClause, whereArgs)
+
+    fun close() = database.close()
 }
