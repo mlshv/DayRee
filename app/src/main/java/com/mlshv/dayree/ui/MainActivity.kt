@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     var viewPager : AHBottomNavigationViewPager? = null
     var floatingActionButton : FloatingActionButton? = null
     var bottomNavigation : AHBottomNavigation? = null
+    var bottomNavigationClick : Boolean = true // dirty hack to prevent callback loop
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors)
         
         bottomNavigation!!.setOnTabSelectedListener { tabPosition, wasSelected ->
+            bottomNavigationClick = true
             viewPager!!.currentItem = tabPosition
             true
         }
@@ -46,8 +48,11 @@ class MainActivity : AppCompatActivity() {
         viewPager!!.adapter = pagerAdapter
         viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) {
-                bottomNavigation!!.currentItem = position
+                if (!bottomNavigationClick) { // don't wanna set bottom navigation if it just changed tab position (preventing a loop)
+                    bottomNavigation!!.currentItem = position
+                }
                 reshowFab()
+                bottomNavigationClick = false
             }
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
