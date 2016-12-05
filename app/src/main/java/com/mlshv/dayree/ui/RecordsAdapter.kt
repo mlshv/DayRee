@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.mlshv.dayree.R
 
-class RecordsAdapter(val dataset: Array<String>) : RecyclerView.Adapter<RecordsAdapter.ViewHolder>() {
+class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.v?.text = dataset[position]
+        // TODO
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount() = 0
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent?.context)

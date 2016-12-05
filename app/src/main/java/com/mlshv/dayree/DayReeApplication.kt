@@ -23,7 +23,7 @@ class DayReeApplication : Application() {
 
     fun isDatabaseExists() = dbHelper.isDatabaseExists()
 
-    fun isPasswordCorrect(password: String) = dbHelper.isDatabasePasswordCorrect(password)
+    fun isPasswordCorrect(password: String) = dbHelper.tryOpenDatabaseWithPassword(password)
 
     fun createDatabaseWithPassword(password: String) {
         val db = dbHelper.getWritableDatabase(password)

@@ -34,11 +34,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
-    compile name: 'cupboard-2.1.4'
 }
 repositories {
     mavenCentral()
-    flatDir {
-        dirs 'libs'
-    }
 }

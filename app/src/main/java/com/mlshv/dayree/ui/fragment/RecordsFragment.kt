@@ -12,8 +12,6 @@ import android.support.v7.widget.LinearLayoutManager
 
 class RecordsFragment : Fragment() {
 
-    val names = arrayOf("Иван", "Марья", "Петр", "Антон", "Даша", "Борис", "Костя", "Игорь", "Анна", "Денис", "Андрей")
-
     var recordsRecyclerView : RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -27,7 +25,7 @@ class RecordsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val recyclerViewAdapter = RecordsAdapter(names)
+        val recyclerViewAdapter = RecordsAdapter()
         recordsRecyclerView?.adapter = recyclerViewAdapter
         recordsRecyclerView?.layoutManager = LinearLayoutManager(activity)
         recordsRecyclerView?.setHasFixedSize(true)
