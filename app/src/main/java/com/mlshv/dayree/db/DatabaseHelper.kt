@@ -1,21 +1,15 @@
 package com.mlshv.dayree.db
 
 import android.content.Context
-import com.mlshv.dayree.model.Record
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SQLiteException
 import net.sqlcipher.database.SQLiteOpenHelper
-import nl.qbusict.cupboard.CupboardFactory
 
 class DatabaseHelper(val context: Context) : SQLiteOpenHelper(context, dbName, null, dbVersion) {
     companion object {
         val dbName = "dayRee.db"
         val dbVersion = 1
         var dbInstance : SQLiteDatabase? = null
-
-        init {
-            CupboardFactory.cupboard().register(Record::class.java)
-        }
 
         fun closeDatabase() {
             dbInstance?.close()
