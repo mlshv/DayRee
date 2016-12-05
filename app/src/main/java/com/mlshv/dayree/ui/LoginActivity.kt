@@ -36,14 +36,14 @@ class LoginActivity : AppCompatActivity() {
 
             if (app.isDatabaseExists()) {
                 if (app.isPasswordCorrect(password)) {
-                    goToMainActivity()
+                    useApplication()
                 } else {
                     Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 if (passwordsMatch) {
                     app.createDatabaseWithPassword(password)
-                    goToMainActivity()
+                    useApplication()
                 } else {
                     Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show()
                 }
@@ -51,9 +51,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun goToMainActivity() {
-        val mainIntent = Intent(this, MainActivity::class.java)
-        this.startActivity(mainIntent)
+    fun useApplication() {
+        DayReeApplication.setLocked(false)
+        if (parent == null) {
+            val mainIntent = Intent(this, MainActivity::class.java)
+            this.startActivity(mainIntent)
+        }
         this.finish()
     }
 }

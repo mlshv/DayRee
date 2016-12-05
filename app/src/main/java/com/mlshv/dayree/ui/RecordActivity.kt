@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import com.mlshv.dayree.R
+import com.mlshv.dayree.db.DatabaseHelper
 import com.mlshv.dayree.model.Record
 
 class RecordActivity : AppCompatActivity() {
@@ -25,11 +26,10 @@ class RecordActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_save -> {
-                val newRecord = Record(title = titleEditText!!.text.toString(),
-                        text = noteEditText!!.text.toString(),
-                        creationTimestamp = System.currentTimeMillis(),
-                        updateTimestamp = System.currentTimeMillis())
-                Log.d("LOG", "Created record with title ${titleEditText!!.text} and text ${noteEditText!!.text}")
+                val newRecord = Record(
+                        title = titleEditText!!.text.toString(),
+                        text = noteEditText!!.text.toString())
+                DatabaseHelper.putRecord(newRecord)
                 this.finish()
                 return true
             }

@@ -11,6 +11,8 @@ import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
+import com.mlshv.dayree.DayReeApplication
+import com.mlshv.dayree.db.DatabaseHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +27,15 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
         initViewPager()
         initFloatingActionButton()
+    }
+
+    override fun onResume() {
+        if (DayReeApplication.isLocked()) {
+            val loginIntent = Intent(this, LoginActivity::class.java)
+            val loginRequest = 1
+            this.startActivityForResult(loginIntent, loginRequest)
+        }
+        super.onResume()
     }
 
     private fun initBottomNavigation() {
@@ -87,5 +98,11 @@ class MainActivity : AppCompatActivity() {
             fab!!.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this@MainActivity, getColorForCurrentTabPosition()))
             fab.show()
         }
+    }
+
+    override fun onStop() {
+        DatabaseHelper.closeDatabase()
+        DayReeApplication.setLocked(true)
+        super.onStop()
     }
 }

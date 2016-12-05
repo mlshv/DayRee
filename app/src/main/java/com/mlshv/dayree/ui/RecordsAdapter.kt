@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.mlshv.dayree.R
+import com.mlshv.dayree.db.DatabaseHelper
 
 class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.ViewHolder>() {
 
+    val records = DatabaseHelper.getAllRecords()
+
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        // TODO
+        holder?.v?.text = records[position].text
     }
 
-    override fun getItemCount() = 0
+    override fun getItemCount() = records.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent?.context)
