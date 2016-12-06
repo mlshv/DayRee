@@ -64,6 +64,11 @@ class DatabaseHelper(val context: Context) : SQLiteOpenHelper(context, dbName, n
             c.close()
             return result
         }
+
+        fun deleteRecordById(id: Long) {
+            val deleteQuery = "DELETE FROM records WHERE id=$id"
+            dbInstance!!.execSQL(deleteQuery)
+        }
     }
 
     fun tryOpenDatabaseWithPassword(password: String): Boolean {
