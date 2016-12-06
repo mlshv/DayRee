@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.mlshv.dayree.R
 import com.mlshv.dayree.db.DatabaseHelper
 import com.mlshv.dayree.model.Record
+import com.mlshv.dayree.ui.view.RecordsListItem
 import java.util.*
 
 class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.ViewHolder>() {
@@ -14,15 +15,22 @@ class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.ViewHolder>() {
     private val records : ArrayList<Record> = DatabaseHelper.getAllRecords()
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.v?.text = records[position].text
+        holder!!.titleView.text = records[position].title
+        holder.textView.text = records[position].text
+        holder.recordId = records[position].id
     }
 
     override fun getItemCount() = records.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent?.context)
-                .inflate(R.layout.record_text_view, parent, false) as TextView
+                .inflate(R.layout.record_list_item, parent, false) as RecordsListItem
         return ViewHolder(v)
+    }
+
+    fun remove(index: Int) {
+        records.removeAt(index)
+        this.notifyDataSetChanged()
     }
 
     fun update() {
@@ -30,5 +38,9 @@ class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.ViewHolder>() {
         records.addAll(DatabaseHelper.getAllRecords())
     }
 
-    class ViewHolder(val v: TextView) : RecyclerView.ViewHolder(v)
+    class ViewHolder(v: RecordsListItem) : RecyclerView.ViewHolder(v) {
+        val titleView = v.findViewById(R.id.record_list_item_title) as TextView
+        val textView = v.findViewById(R.id.record_list_item_text) as TextView
+        var recordId = v.recordId
+    }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mlshv.dayree.ui.view.RecordsListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/record_list_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/record_list_item_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingStart="16dp"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="14sp" />
+</com.mlshv.dayree.ui.view.RecordsListItem>
