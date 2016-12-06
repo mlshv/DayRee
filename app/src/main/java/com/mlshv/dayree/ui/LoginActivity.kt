@@ -52,9 +52,15 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
     override fun onResume() {
         DatabaseHelper.closeDatabase()
         super.onResume()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
     }
 
     fun useApplication() {
