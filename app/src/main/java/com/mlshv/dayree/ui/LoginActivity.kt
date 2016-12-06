@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 if (passwordsMatch) {
                     app.createDatabaseWithPassword(password)
+                    app.isPasswordCorrect(password)
                     useApplication()
                 } else {
                     Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show()
