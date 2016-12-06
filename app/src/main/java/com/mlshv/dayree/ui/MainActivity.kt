@@ -7,19 +7,20 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
 import com.mlshv.dayree.DayReeApplication
-import com.mlshv.dayree.db.DatabaseHelper
 
 class MainActivity : AppCompatActivity() {
 
     var viewPager : AHBottomNavigationViewPager? = null
     var floatingActionButton : FloatingActionButton? = null
     var bottomNavigation : AHBottomNavigation? = null
-    var bottomNavigationClick : Boolean = false // dirty hack to prevent callback loop
+    var bottomNavigationClickPerformed: Boolean = false // dirty hack to prevent callback loop
+    var childActivityOpened = false
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +31,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
+        childActivityOpened = false
         if (DayReeApplication.isLocked()) {
             val loginIntent = Intent(this, LoginActivity::class.java)
-            val loginRequest = 1
-            this.startActivityForResult(loginIntent, loginRequest)
+            this.startActivity(loginIntent)
         }
         super.onResume()
     }
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors)
         
         bottomNavigation!!.setOnTabSelectedListener { tabPosition, wasSelected ->
-            bottomNavigationClick = true
+            bottomNavigationClickPerformed = true
             viewPager!!.currentItem = tabPosition
             true
         }
@@ -59,11 +60,11 @@ class MainActivity : AppCompatActivity() {
         viewPager!!.adapter = pagerAdapter
         viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) {
-                if (!bottomNavigationClick) { // don't wanna set bottom navigation if it has just changed a tab (prevents callback loop)
+                if (!bottomNavigationClickPerformed) { // don't wanna set bottom navigation if it has just changed a tab (prevents callback loop)
                     bottomNavigation!!.currentItem = position
                 }
                 reshowFab()
-                bottomNavigationClick = false
+                bottomNavigationClickPerformed = false
             }
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
@@ -73,9 +74,13 @@ class MainActivity : AppCompatActivity() {
     private fun initFloatingActionButton() {
         floatingActionButton = findViewById(R.id.fab) as FloatingActionButton
         floatingActionButton!!.setOnClickListener({
-            val recordIntent = Intent(this, RecordActivity::class.java)
-            startActivity(recordIntent)
+            startRecordActivity()
         })
+    }
+
+    private fun startRecordActivity() {
+        val recordIntent = Intent(this, RecordActivity::class.java)
+        startActivity(recordIntent)
     }
 
     private fun reshowFab() {
@@ -101,8 +106,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
-        DatabaseHelper.closeDatabase()
-        DayReeApplication.setLocked(true)
+        if (!childActivityOpened) {
+            DayReeApplication.setLocked(true)
+            Log.d(this.javaClass.canonicalName, "Set application locked")
+        }
         super.onStop()
+    }
+
+    override fun startActivity(intent: Intent?) {
+        childActivityOpened = true
+        super.startActivity(intent)
     }
 }
