@@ -24,6 +24,11 @@ abstract class ReeActivity : AppCompatActivity() {
         super.onStop()
     }
 
+    override fun onDestroy() {
+        DayReeApplication.setLocked(false)
+        super.onDestroy()
+    }
+
     override fun startActivity(intent: Intent?) {
         childActivityOpened = true
         super.startActivity(intent)
