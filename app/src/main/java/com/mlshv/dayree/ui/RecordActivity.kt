@@ -1,7 +1,6 @@
 package com.mlshv.dayree.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
@@ -10,7 +9,7 @@ import com.mlshv.dayree.R
 import com.mlshv.dayree.db.DatabaseHelper
 import com.mlshv.dayree.model.Record
 
-class RecordActivity : AppCompatActivity() {
+class RecordActivity : ReeActivity() {
     var titleEditText : EditText? = null
     var noteEditText : EditText? = null
 

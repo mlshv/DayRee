@@ -6,21 +6,17 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
-import com.mlshv.dayree.DayReeApplication
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ReeActivity() {
 
     var viewPager : AHBottomNavigationViewPager? = null
     var floatingActionButton : FloatingActionButton? = null
     var bottomNavigation : AHBottomNavigation? = null
     var bottomNavigationClickPerformed: Boolean = false // dirty hack to prevent callback loop
-    var childActivityOpened = false
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,15 +24,6 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
         initViewPager()
         initFloatingActionButton()
-    }
-
-    override fun onResume() {
-        childActivityOpened = false
-        if (DayReeApplication.isLocked()) {
-            val loginIntent = Intent(this, LoginActivity::class.java)
-            this.startActivity(loginIntent)
-        }
-        super.onResume()
     }
 
     private fun initBottomNavigation() {
@@ -103,18 +90,5 @@ class MainActivity : AppCompatActivity() {
             fab!!.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this@MainActivity, getColorForCurrentTabPosition()))
             fab.show()
         }
-    }
-
-    override fun onStop() {
-        if (!childActivityOpened) {
-            DayReeApplication.setLocked(true)
-            Log.d(this.javaClass.canonicalName, "Set application locked")
-        }
-        super.onStop()
-    }
-
-    override fun startActivity(intent: Intent?) {
-        childActivityOpened = true
-        super.startActivity(intent)
     }
 }
