@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager
 class RecordsFragment : Fragment() {
 
     var recordsRecyclerView : RecyclerView? = null
+    val recyclerViewAdapter = RecordsAdapter()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -22,10 +23,13 @@ class RecordsFragment : Fragment() {
         return view
     }
 
+    override fun onResume() {
+        recyclerViewAdapter.update()
+        super.onResume()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        val recyclerViewAdapter = RecordsAdapter()
         recordsRecyclerView?.adapter = recyclerViewAdapter
         recordsRecyclerView?.layoutManager = LinearLayoutManager(activity)
         recordsRecyclerView?.setHasFixedSize(true)

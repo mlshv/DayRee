@@ -46,7 +46,7 @@ class DatabaseHelper(val context: Context) : SQLiteOpenHelper(context, dbName, n
             return result
         }
 
-        fun getAllRecords() : List<Record> {
+        fun getAllRecords() : ArrayList<Record> {
             val result = ArrayList<Record>()
             val selectQuery = "SELECT  * FROM records"
             val c = dbInstance?.rawQuery(selectQuery, null) ?: return result
