@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.mlshv.dayree.R
 import android.content.Intent
+import android.util.Log
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -65,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun useApplication() {
         DayReeApplication.setLocked(false)
-        if (parent == null) {
+        if (intent.action != null) {
             val mainIntent = Intent(this, MainActivity::class.java)
             this.startActivity(mainIntent)
         }
