@@ -16,7 +16,7 @@ class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         holder!!.titleView.text = records[position].title
-        holder.textView.text = records[position].text
+        holder.textView.text = records[position].text.replace("\n", " ")
         holder.recordId = records[position].id
     }
 
