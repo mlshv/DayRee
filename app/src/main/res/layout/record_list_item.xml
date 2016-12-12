@@ -2,7 +2,9 @@
 <com.mlshv.dayree.ui.view.RecordsListItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true">
 
     <TextView
         android:id="@+id/record_list_item_title"
@@ -14,7 +16,8 @@
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:textColor="@color/textColorPrimary"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/record_list_item_text"
@@ -26,5 +29,7 @@
         android:paddingRight="16dp"
         android:paddingStart="16dp"
         android:textColor="@color/textColorSecondary"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:maxLines="1"/>
 </com.mlshv.dayree.ui.view.RecordsListItem>
