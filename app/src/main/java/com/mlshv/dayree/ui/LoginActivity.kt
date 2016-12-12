@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import com.mlshv.dayree.R
 import android.content.Intent
-import android.util.Log
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.Toast

@@ -16,7 +16,6 @@ class MainActivity : ReeActivity() {
     var viewPager : AHBottomNavigationViewPager? = null
     var floatingActionButton : FloatingActionButton? = null
     var bottomNavigation : AHBottomNavigation? = null
-    var bottomNavigationClickPerformed: Boolean = false // dirty hack to prevent callback loop
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +33,7 @@ class MainActivity : ReeActivity() {
         navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors)
         
         bottomNavigation!!.setOnTabSelectedListener { tabPosition, wasSelected ->
-            bottomNavigationClickPerformed = true
-            viewPager!!.currentItem = tabPosition
+            viewPager!!.setCurrentItem(tabPosition, false)
             true
         }
     }
@@ -46,23 +44,22 @@ class MainActivity : ReeActivity() {
         val pagerAdapter = MainPagerAdapter(supportFragmentManager)
         viewPager!!.adapter = pagerAdapter
         viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            private var position = 0
             override fun onPageSelected(position: Int) {
-                if (!bottomNavigationClickPerformed) { // don't wanna set bottom navigation if it has just changed a tab (prevents callback loop)
-                    bottomNavigation!!.currentItem = position
+                if (position != this.position) {
+                    this.position = position
+                    reshowFab()
                 }
-                reshowFab()
-                bottomNavigationClickPerformed = false
             }
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
         })
+        viewPager!!.setPagingEnabled(false) // disable swiping
     }
 
     private fun initFloatingActionButton() {
         floatingActionButton = findViewById(R.id.fab) as FloatingActionButton
-        floatingActionButton!!.setOnClickListener({
-            startRecordActivity()
-        })
+        floatingActionButton!!.setOnClickListener({ startRecordActivity() })
     }
 
     private fun startRecordActivity() {
@@ -70,9 +67,7 @@ class MainActivity : ReeActivity() {
         startActivity(recordIntent)
     }
 
-    private fun reshowFab() {
-        floatingActionButton?.hide(fabChangeListener)
-    }
+    private fun reshowFab() = floatingActionButton?.hide(fabChangeListener)
 
     val fabChangeListener = object : FloatingActionButton.OnVisibilityChangedListener() {
         private fun getColorForCurrentTabPosition() : Int {
