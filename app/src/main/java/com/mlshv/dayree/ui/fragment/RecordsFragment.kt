@@ -19,7 +19,6 @@ class RecordsFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_records, container, false)
         recordsRecyclerView = view.findViewById(R.id.record_list) as RecyclerView
-
         return view
     }
 
@@ -27,6 +26,8 @@ class RecordsFragment : Fragment() {
         recyclerViewAdapter.update()
         super.onResume()
     }
+
+    fun scrollTop() = recordsRecyclerView?.smoothScrollToPosition(0)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

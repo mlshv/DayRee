@@ -20,6 +20,8 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         fragments[2] = (PhotosFragment())
     }
 
+    fun scrollTop() = (fragments[0] as RecordsFragment).scrollTop()
+
     override fun getItem(position: Int) = fragments[position]
 
     override fun getCount() = fragments.size

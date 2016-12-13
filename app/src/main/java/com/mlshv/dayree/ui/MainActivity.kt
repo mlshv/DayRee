@@ -36,6 +36,7 @@ class MainActivity : ReeActivity() {
         
         bottomNavigation!!.setOnTabSelectedListener { tabPosition, wasSelected ->
             viewPager!!.setCurrentItem(tabPosition, false)
+            (viewPager!!.adapter as MainPagerAdapter).scrollTop()
             true
         }
         bottomNavigation!!.manageFloatingActionButtonBehavior(floatingActionButton)
@@ -47,13 +48,7 @@ class MainActivity : ReeActivity() {
         val pagerAdapter = MainPagerAdapter(supportFragmentManager)
         viewPager!!.adapter = pagerAdapter
         viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            private var position = 0
-            override fun onPageSelected(position: Int) {
-                if (position != this.position) {
-                    this.position = position
-                    reshowFab()
-                }
-            }
+            override fun onPageSelected(position: Int) { reshowFab() }
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
         })
