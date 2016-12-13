@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 
 class RecordsListItem : LinearLayout {
-    var recordId: Long = 0
+    var recordDbId: Long = 0
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
