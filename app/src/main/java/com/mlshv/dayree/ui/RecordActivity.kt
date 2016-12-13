@@ -24,9 +24,12 @@ class RecordActivity : ReeActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_save -> {
+                val titleInput = titleEditText!!.text.toString()
+                val textInput = noteEditText!!.text.toString()
+                if (titleInput.isBlank() && textInput.isBlank()) return true
                 val newRecord = Record(
-                        title = titleEditText!!.text.toString(),
-                        text = noteEditText!!.text.toString())
+                        title = titleInput,
+                        text = textInput)
                 DatabaseHelper.putRecord(newRecord)
                 this.finish()
                 return true
