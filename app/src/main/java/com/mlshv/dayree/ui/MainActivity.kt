@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
+import android.util.Log
 import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
+
+
 
 class MainActivity : ReeActivity() {
 
@@ -20,9 +23,9 @@ class MainActivity : ReeActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initFloatingActionButton()
         initBottomNavigation()
         initViewPager()
-        initFloatingActionButton()
     }
 
     private fun initBottomNavigation() {
@@ -36,6 +39,7 @@ class MainActivity : ReeActivity() {
             viewPager!!.setCurrentItem(tabPosition, false)
             true
         }
+        bottomNavigation!!.manageFloatingActionButtonBehavior(floatingActionButton)
     }
 
     private fun initViewPager() {
