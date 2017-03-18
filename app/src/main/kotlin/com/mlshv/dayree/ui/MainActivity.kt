@@ -15,9 +15,9 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
 
 class MainActivity : ReeActivity() {
 
-    var viewPager : AHBottomNavigationViewPager? = null
-    var floatingActionButton : FloatingActionButton? = null
-    var bottomNavigation : AHBottomNavigation? = null
+    lateinit var viewPager : AHBottomNavigationViewPager
+    lateinit var floatingActionButton : FloatingActionButton
+    lateinit var bottomNavigation : AHBottomNavigation
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,34 +30,34 @@ class MainActivity : ReeActivity() {
     private fun initBottomNavigation() {
         val tabColors = applicationContext.resources.getIntArray(R.array.tab_colors)
         bottomNavigation = findViewById(R.id.bottom_navigation) as AHBottomNavigation
-        bottomNavigation!!.isColored = true
+        bottomNavigation.isColored = true
         val navigationAdapter = AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu)
         navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors)
         
-        bottomNavigation!!.setOnTabSelectedListener { tabPosition, wasSelected ->
-            viewPager!!.setCurrentItem(tabPosition, false)
-            (viewPager!!.adapter as MainPagerAdapter).scrollTop()
+        bottomNavigation.setOnTabSelectedListener { tabPosition, wasSelected ->
+            viewPager.setCurrentItem(tabPosition, false)
+            (viewPager.adapter as MainPagerAdapter).scrollTop()
             true
         }
-        bottomNavigation!!.manageFloatingActionButtonBehavior(floatingActionButton)
+        bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton)
     }
 
     private fun initViewPager() {
         viewPager = findViewById(R.id.main_pager) as AHBottomNavigationViewPager
-        viewPager!!.setPagingEnabled(true)
+        viewPager.setPagingEnabled(true)
         val pagerAdapter = MainPagerAdapter(supportFragmentManager)
-        viewPager!!.adapter = pagerAdapter
-        viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        viewPager.adapter = pagerAdapter
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) { reshowFab() }
             override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
         })
-        viewPager!!.setPagingEnabled(false) // disable swiping
+        viewPager.setPagingEnabled(false) // disable swiping
     }
 
     private fun initFloatingActionButton() {
         floatingActionButton = findViewById(R.id.fab) as FloatingActionButton
-        floatingActionButton!!.setOnClickListener({ startRecordActivity() })
+        floatingActionButton.setOnClickListener({ startRecordActivity() })
     }
 
     private fun startRecordActivity() {
@@ -65,11 +65,11 @@ class MainActivity : ReeActivity() {
         startActivity(recordIntent)
     }
 
-    private fun reshowFab() = floatingActionButton?.hide(fabChangeListener)
+    private fun reshowFab() = floatingActionButton.hide(fabChangeListener)
 
     val fabChangeListener = object : FloatingActionButton.OnVisibilityChangedListener() {
         private fun getColorForCurrentTabPosition() : Int {
-            val tabPosition = viewPager!!.currentItem
+            val tabPosition = viewPager.currentItem
             when(tabPosition) {
                 0 -> return R.color.color_tab_0
                 1 -> return R.color.color_tab_1

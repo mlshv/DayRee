@@ -10,8 +10,8 @@ import dayree.db.DatabaseHelper
 import dayree.model.Record
 
 class RecordActivity : ReeActivity() {
-    var titleEditText : EditText? = null
-    var noteEditText : EditText? = null
+    lateinit var titleEditText : EditText
+    lateinit var noteEditText : EditText
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +24,8 @@ class RecordActivity : ReeActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_save -> {
-                val titleInput = titleEditText!!.text.toString()
-                val textInput = noteEditText!!.text.toString()
+                val titleInput = titleEditText.text.toString()
+                val textInput = noteEditText.text.toString()
                 if (titleInput.isBlank() && textInput.isBlank()) return true
                 val newRecord = Record(
                         title = titleInput,

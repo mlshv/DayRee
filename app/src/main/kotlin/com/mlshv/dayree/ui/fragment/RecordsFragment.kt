@@ -12,7 +12,7 @@ import android.support.v7.widget.LinearLayoutManager
 
 class RecordsFragment : Fragment() {
 
-    var recordsRecyclerView : RecyclerView? = null
+    lateinit var recordsRecyclerView : RecyclerView
     val recyclerViewAdapter = RecordsAdapter()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -27,12 +27,12 @@ class RecordsFragment : Fragment() {
         super.onResume()
     }
 
-    fun scrollTop() = recordsRecyclerView?.smoothScrollToPosition(0)
+    fun scrollTop() = recordsRecyclerView.smoothScrollToPosition(0)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        recordsRecyclerView?.adapter = recyclerViewAdapter
-        recordsRecyclerView?.layoutManager = LinearLayoutManager(activity)
-        recordsRecyclerView?.setHasFixedSize(true)
+        recordsRecyclerView.adapter = recyclerViewAdapter
+        recordsRecyclerView.layoutManager = LinearLayoutManager(activity)
+        recordsRecyclerView.setHasFixedSize(true)
     }
 }

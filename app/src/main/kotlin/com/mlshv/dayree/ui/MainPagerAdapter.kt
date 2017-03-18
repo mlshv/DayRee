@@ -12,7 +12,7 @@ import dayree.ui.fragment.RecordsFragment
 class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     val fragments = arrayOfNulls<Fragment>(3)
-    var currentFragment: Fragment? = null
+    lateinit var currentFragment: Fragment
 
     init {
         fragments[0] = (RecordsFragment())

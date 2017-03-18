@@ -9,17 +9,17 @@ class DayReeApplication : Application() {
     companion object {
         private val lockStatus = "LOCK_STATUS"
 
-        private var singleton: DayReeApplication? = null
+        private lateinit var singleton: DayReeApplication
 
         fun getInstance(): DayReeApplication {
-            return singleton!!
+            return singleton
         }
 
         fun setLocked(lock: Boolean) {
-            singleton?.getSharedPreferences(lockStatus, Context.MODE_PRIVATE)!!.edit().putBoolean("LOCK", lock).apply()
+            singleton.getSharedPreferences(lockStatus, Context.MODE_PRIVATE)!!.edit().putBoolean("LOCK", lock).apply()
         }
 
-        fun isLocked() = singleton?.getSharedPreferences(lockStatus, Context.MODE_PRIVATE)!!.getBoolean("LOCK", true)
+        fun isLocked() = singleton.getSharedPreferences(lockStatus, Context.MODE_PRIVATE)!!.getBoolean("LOCK", true)
     }
 
     private val dbHelper = DatabaseHelper(this)
