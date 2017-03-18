@@ -71,4 +71,15 @@
         android:theme="@style/ReeButton"
         android:layout_below="@+id/repeat_password_text" />
 
+    <Button
+        android:text="Test pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_pin"
+        android:textColor="@android:color/white"
+        android:theme="@style/ReeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="114dp" />
+
 </RelativeLayout>

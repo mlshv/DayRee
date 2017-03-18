@@ -18,6 +18,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        (findViewById(R.id.test_pin) as Button).setOnClickListener { testPin() }
+
         val passwordEditText = findViewById(R.id.password_text) as EditText
         val repeatPasswordEditText = findViewById(R.id.repeat_password_text) as EditText
         val loginButton = findViewById(R.id.login_button) as Button
@@ -70,5 +72,10 @@ class LoginActivity : AppCompatActivity() {
             this.startActivity(mainIntent)
         }
         this.finish()
+    }
+
+    fun testPin() {
+        val intetiwe = Intent(this, PinActivity::class.java)
+        this.startActivity(intetiwe)
     }
 }
