@@ -1,4 +1,4 @@
-package com.mlshv.dayree.ui.view
+package dayree.ui.view
 
 import android.content.Context
 import android.util.AttributeSet

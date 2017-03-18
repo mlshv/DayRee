@@ -1,8 +1,8 @@
-package com.mlshv.dayree
+package dayree
 
 import android.app.Application
 import android.content.Context
-import com.mlshv.dayree.db.DatabaseHelper
+import dayree.db.DatabaseHelper
 import net.sqlcipher.database.SQLiteDatabase
 
 class DayReeApplication : Application() {

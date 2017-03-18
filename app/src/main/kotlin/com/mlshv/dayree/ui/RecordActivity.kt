@@ -1,4 +1,4 @@
-package com.mlshv.dayree.ui
+package dayree.ui
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -6,8 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import com.mlshv.dayree.R
-import com.mlshv.dayree.db.DatabaseHelper
-import com.mlshv.dayree.model.Record
+import dayree.db.DatabaseHelper
+import dayree.model.Record
 
 class RecordActivity : ReeActivity() {
     var titleEditText : EditText? = null

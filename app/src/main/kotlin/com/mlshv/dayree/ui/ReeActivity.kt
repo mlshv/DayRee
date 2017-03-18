@@ -1,8 +1,8 @@
-package com.mlshv.dayree.ui
+package dayree.ui
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
-import com.mlshv.dayree.DayReeApplication
+import dayree.DayReeApplication
 
 abstract class ReeActivity : AppCompatActivity() {
 

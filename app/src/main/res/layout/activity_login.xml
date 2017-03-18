@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:noHistory="true"
-    tools:context="com.mlshv.dayree.ui.LoginActivity"
+    tools:context="com.mlshv.dayree.dayree.ui.LoginActivity"
     android:background="@android:color/white">
 
     <EditText

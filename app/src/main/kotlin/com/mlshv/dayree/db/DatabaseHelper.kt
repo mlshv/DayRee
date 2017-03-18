@@ -1,7 +1,7 @@
-package com.mlshv.dayree.db
+package dayree.db
 
 import android.content.Context
-import com.mlshv.dayree.model.Record
+import dayree.model.Record
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SQLiteException
 import net.sqlcipher.database.SQLiteOpenHelper

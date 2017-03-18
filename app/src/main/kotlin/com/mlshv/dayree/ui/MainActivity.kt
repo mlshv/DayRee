@@ -1,4 +1,4 @@
-package com.mlshv.dayree.ui
+package dayree.ui
 
 import android.content.Intent
 import android.content.res.ColorStateList

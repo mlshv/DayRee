@@ -1,4 +1,4 @@
-package com.mlshv.dayree.ui
+package dayree.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

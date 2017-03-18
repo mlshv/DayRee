@@ -1,17 +1,17 @@
-package com.mlshv.dayree.ui
+package dayree.ui
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.view.ViewGroup
-import com.mlshv.dayree.ui.fragment.AudiosFragment
-import com.mlshv.dayree.ui.fragment.PhotosFragment
-import com.mlshv.dayree.ui.fragment.RecordsFragment
+import dayree.ui.fragment.AudiosFragment
+import dayree.ui.fragment.PhotosFragment
+import dayree.ui.fragment.RecordsFragment
 
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    val fragments = kotlin.arrayOfNulls<Fragment>(3)
+    val fragments = arrayOfNulls<Fragment>(3)
     var currentFragment: Fragment? = null
 
     init {
