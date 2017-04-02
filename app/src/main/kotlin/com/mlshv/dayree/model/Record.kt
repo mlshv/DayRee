@@ -1,4 +1,4 @@
-package dayree.model
+package com.mlshv.dayree.model
 
 import java.text.SimpleDateFormat
 import java.util.*

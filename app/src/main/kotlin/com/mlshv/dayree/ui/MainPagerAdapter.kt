@@ -1,12 +1,12 @@
-package dayree.ui
+package com.mlshv.dayree.ui
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.view.ViewGroup
-import dayree.ui.fragment.AudiosFragment
-import dayree.ui.fragment.PhotosFragment
-import dayree.ui.fragment.RecordsFragment
+import com.mlshv.dayree.ui.fragment.AudiosFragment
+import com.mlshv.dayree.ui.fragment.PhotosFragment
+import com.mlshv.dayree.ui.fragment.RecordsFragment
 
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {

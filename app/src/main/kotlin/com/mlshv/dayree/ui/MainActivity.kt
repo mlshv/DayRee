@@ -1,4 +1,4 @@
-package dayree.ui
+package com.mlshv.dayree.ui
 
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -10,7 +10,8 @@ import com.mlshv.dayree.R
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
-
+import com.mlshv.dayree.ui.MainPagerAdapter
+import com.mlshv.dayree.ui.ReeActivity
 
 
 class MainActivity : ReeActivity() {

@@ -1,13 +1,13 @@
-package dayree.ui
+package com.mlshv.dayree.ui
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.mlshv.dayree.R
-import dayree.db.DatabaseHelper
-import dayree.model.Record
-import dayree.ui.view.RecordsListItem
+import com.mlshv.dayree.db.DatabaseHelper
+import com.mlshv.dayree.model.Record
+import com.mlshv.dayree.ui.view.RecordsListItem
 import java.util.*
 
 class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {

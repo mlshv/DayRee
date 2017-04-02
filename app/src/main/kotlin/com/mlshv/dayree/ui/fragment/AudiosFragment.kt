@@ -1,4 +1,4 @@
-package dayree.ui.fragment
+package com.mlshv.dayree.ui.fragment
 
 import android.support.v4.app.Fragment
 

@@ -1,4 +1,4 @@
-package dayree.ui.fragment
+package com.mlshv.dayree.ui.fragment
 
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.mlshv.dayree.R
-import dayree.ui.RecordsAdapter
+import com.mlshv.dayree.ui.RecordsAdapter
 import android.support.v7.widget.LinearLayoutManager
 
 class RecordsFragment : Fragment() {

@@ -1,4 +1,4 @@
-package dayree.ui
+package com.mlshv.dayree.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.content.Intent
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.Toast
-import dayree.DayReeApplication
-import dayree.db.DatabaseHelper
+import com.mlshv.dayree.DayReeApplication
+import com.mlshv.dayree.db.DatabaseHelper
 
 
 class LoginActivity : AppCompatActivity() {
