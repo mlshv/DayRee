@@ -3,107 +3,222 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="38"
+        android:layout_weight="1"
         android:background="?attr/colorPrimary"
         android:theme="?attr/actionBarTheme"
         android:minHeight="?attr/actionBarSize"
-        android:id="@+id/topPanel" />
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="62"
-        android:layout_gravity="center"
-        android:columnCount="3">
-
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="1"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button"
-            android:shape="oval" />
-
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="2"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button2" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="3"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button3" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="4"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button4" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="5"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button5" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="6"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button6" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="7"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button7" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="8"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button8" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="9"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button9" />
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="0"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button0"
-            android:layout_column="1"/>
-        <Button
-            android:layout_width="@dimen/box_size"
-            android:layout_height="@dimen/box_size"
-            android:textSize="30sp"
-            android:text="Del"
-            android:background="?attr/selectableItemBackground"
-            android:id="@+id/button_del"
-            android:shape="oval" />
+        android:id="@+id/topPanel">
 
 
-    </GridLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:id="@+id/linearLayout">
+            <ImageView
+                android:id="@+id/pin_circle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:src="@drawable/pin_circle"
+                />
+            <ImageView
+                android:id="@+id/pin_circle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:src="@drawable/pin_circle"
+                />
+            <ImageView
+                android:id="@+id/pin_circle3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:src="@drawable/pin_circle"
+                />
+            <ImageView
+                android:id="@+id/pin_circle4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:src="@drawable/pin_circle"
+                />
+        </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DayRee"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:layout_above="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp" />
 
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button1"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="1"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button2"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="2"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button3"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="3"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button4"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="4"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button5"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="5"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button6"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="6"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button7"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="7"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button8"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="8"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button9"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="9"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+            <android.support.v4.widget.Space
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size" />
+
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/button0"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+            <com.mlshv.dayree.ui.view.PinButton
+                android:id="@+id/buttonDel"
+                android:layout_width="@dimen/box_size"
+                android:layout_height="@dimen/box_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:text="~"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
