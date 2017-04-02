@@ -8,7 +8,6 @@ import android.widget.EditText
 import com.mlshv.dayree.R
 import com.mlshv.dayree.db.DatabaseHelper
 import com.mlshv.dayree.model.Record
-import com.mlshv.dayree.ui.ReeActivity
 
 class RecordActivity : ReeActivity() {
     lateinit var titleEditText : EditText

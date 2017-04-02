@@ -2,10 +2,8 @@ package com.mlshv.dayree.ui.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.MotionEvent
 import android.widget.Button
-import android.widget.Toast
 import com.mlshv.dayree.ui.PinActivity
 
 
