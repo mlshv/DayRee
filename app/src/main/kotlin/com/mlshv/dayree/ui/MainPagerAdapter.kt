@@ -11,14 +11,12 @@ import com.mlshv.dayree.ui.fragment.RecordsFragment
 
 class MainPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    val fragments = arrayOfNulls<Fragment>(3)
-    lateinit var currentFragment: Fragment
+    val fragments : Array<Fragment> = arrayOf(
+            RecordsFragment(),
+            AudiosFragment(),
+            PhotosFragment())
 
-    init {
-        fragments[0] = (RecordsFragment())
-        fragments[1] = (AudiosFragment())
-        fragments[2] = (PhotosFragment())
-    }
+    var currentFragment = fragments[0]
 
     fun scrollTop() = (fragments[0] as RecordsFragment).scrollTop()
 
