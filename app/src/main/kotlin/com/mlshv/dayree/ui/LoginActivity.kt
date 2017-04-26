@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.mlshv.dayree.DayReeApplication
-import com.mlshv.dayree.db.DatabaseHelper
+import com.mlshv.dayree.util.DatabaseHelper
 
 
 class LoginActivity : AppCompatActivity() {
@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             val password = passwordEditText.text.toString()
             val passwordsMatch = password == repeatPasswordEditText.text.toString()
+            DayReeApplication.password = password
 
             if (app.isDatabaseExists()) {
                 if (app.isPasswordCorrect(password)) {

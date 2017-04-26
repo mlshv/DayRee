@@ -33,7 +33,7 @@ class MainActivity : ReeActivity() {
 
     private fun initFloatingActionButton() {
         floatingActionButton = findViewById(R.id.fab) as FloatingActionButton
-        floatingActionButton.setOnClickListener({ startRecordActivity() })
+        floatingActionButton.setOnClickListener({ startNewRecordActivity() })
     }
 
     private fun initFragments() {
@@ -67,9 +67,15 @@ class MainActivity : ReeActivity() {
         reshowFab()
     }
 
-    private fun startRecordActivity() {
-        val recordIntent = Intent(this, RecordActivity::class.java)
-        startActivity(recordIntent)
+    private fun startNewRecordActivity() {
+        if (currentFragment == fragments[0]) {
+            val textRecordIntent = Intent(this, TextRecordEditActivity::class.java)
+            startActivity(textRecordIntent)
+        } else if (currentFragment == fragments[1]) {
+            val audioRecordIntent = Intent(this, RecordAudioActivity::class.java)
+            startActivity(audioRecordIntent)
+        }
+
     }
 
     private fun reshowFab() = floatingActionButton.hide(fabChangeListener)

@@ -1,16 +1,16 @@
-package com.mlshv.dayree.ui
+package com.mlshv.dayree.ui.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.mlshv.dayree.R
-import com.mlshv.dayree.db.DatabaseHelper
+import com.mlshv.dayree.util.DatabaseHelper
 import com.mlshv.dayree.model.Record
 import com.mlshv.dayree.ui.view.RecordsListItem
 import java.util.*
 
-class RecordsAdapter() : RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
+class RecordsAdapter : RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
 
     private val records : ArrayList<Record> = DatabaseHelper.getAllRecords()
 

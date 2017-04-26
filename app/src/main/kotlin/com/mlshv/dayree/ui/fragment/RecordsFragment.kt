@@ -7,11 +7,10 @@ import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.mlshv.dayree.R
-import com.mlshv.dayree.ui.RecordsAdapter
+import com.mlshv.dayree.ui.adapter.RecordsAdapter
 import android.support.v7.widget.LinearLayoutManager
 
 class RecordsFragment : Fragment() {
-
     lateinit var recordsRecyclerView : RecyclerView
     val recyclerViewAdapter = RecordsAdapter()
 

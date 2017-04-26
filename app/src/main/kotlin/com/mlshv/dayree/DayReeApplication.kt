@@ -2,14 +2,30 @@ package com.mlshv.dayree
 
 import android.app.Application
 import android.content.Context
-import com.mlshv.dayree.db.DatabaseHelper
+import com.mlshv.dayree.util.DatabaseHelper
 import net.sqlcipher.database.SQLiteDatabase
+import java.util.*
+
 
 class DayReeApplication : Application() {
     companion object {
+        val reeLogTag: String
+            inline get() = this::class.java.canonicalName
+        var password = ""
         private val lockStatus = "LOCK_STATUS"
-
+        private val saltStorage = "SALT_STORAGE"
         private lateinit var singleton: DayReeApplication
+
+        fun getSalt(): ByteArray {
+            val storage = singleton.getSharedPreferences(saltStorage, Context.MODE_PRIVATE)
+            var salt = UUID.randomUUID().toString()
+            if (storage.contains("SALT")) {
+                salt = storage.getString("SALT", "")
+            } else {
+                storage.edit().putString("SALT", salt).apply()
+            }
+            return salt.toByteArray()
+        }
 
         fun getInstance(): DayReeApplication {
             return singleton
