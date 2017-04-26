@@ -2,24 +2,24 @@
 Yet another Android diary application
 
 ## Why?
-Because I see a lot of diary apps at Google Play that have either good data protection or a lot of cool features. But not both
+Because I need to do something to educate myself. 
+Also, I want to have a password-secured audio journal app with data encryption and synchronisation.
 
 ## How it's going?
-Now I'm on the early stage of development
+Kinda slow
 
-### MVP (minimum viable product)
+### Current tasks
 Implemented:
-* Secure login
-* Encrypted data storage
+* Password login
+* Encrypted data storage (SQLCipher)
+* CRUD for text records
 * Nice tab interface
 
 TODO:
-* CRUD for text records
+* Usable audio recordings
 * Logo & interface improvements
 
 ### What's next
-* Add threading to smooth UI
-* Voice recordings
 * Photo attachments
 * Location records
 * Navigation by calendar
